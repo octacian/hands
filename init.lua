@@ -35,10 +35,11 @@ minetest.register_chatcommand("sethand", {
 
     -- if not param, return to default hand
     if not param or param == "" then
-      player:get_inventory():set_stack("hand", 1, "")
+      player:get_inventory():set_size("hand", 0)
       return true, "Set to default hand"
     end
 
+    player:get_inventory():set_size("hand", 1)
     player:get_inventory():set_stack("hand", 1, param)
     return true, "Set hand to "..param
   end,
